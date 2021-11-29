@@ -5,7 +5,6 @@ import { InfluxDbTopError } from './error';
 
 export async function readAllOrganizations(influxUrl: string, token: string): Promise<Organization[]> {
     let url: string | null = influxUrl + '/api/v2/orgs';
-    console.log(url);
     let organizations: Organization[] = [];
     while (url != null) {
         const response = await fetch(url, {
