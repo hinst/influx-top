@@ -1,4 +1,4 @@
-import { FluxTableMetaData, QueryApi } from "@influxdata/influxdb-client";
+import { FluxTableMetaData, ParameterizedQuery, QueryApi } from "@influxdata/influxdb-client";
 
 export abstract class RowReader<T> {
     protected resolve: (rowReader: T) => void =
@@ -21,7 +21,7 @@ export abstract class RowReader<T> {
         this.reject(error);
     }
 
-    async read(queryApi: QueryApi, query: string) {
+    async read(queryApi: QueryApi, query: string | ParameterizedQuery ) {
         queryApi.queryRows(query, this);
         return await this.promise;
     }
