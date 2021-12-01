@@ -3,7 +3,7 @@ import { FluxTableMetaData, ParameterizedQuery, QueryApi } from "@influxdata/inf
 export abstract class RowReader<T> {
     protected resolve: (rowReader: T) => void =
         () => { throw new Error('Should never happen') };
-    private reject: (error: Error) => void =
+    protected reject: (error: Error) => void =
         () => { throw new Error('Should never happen') };
     readonly promise: Promise<T>;
 
